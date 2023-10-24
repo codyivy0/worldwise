@@ -1,9 +1,12 @@
+import PageNav from "../components/PageNav";
+
 const Product = () => {
   return (
     <div>
-      Product
+      <PageNav />
+      THIS IS THE PRODUCT PAGE
     </div>
-  )
+  );
 };
 
 export default Product;
