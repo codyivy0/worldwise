@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import AppNav from "./AppNav";
 import Logo from "./Logo.jsx";
 import styles from "./Sidebar.module.css";
@@ -11,10 +11,11 @@ const Sidebar = () => {
       </Link>
       <AppNav />
 
-      <p>List of cities</p>
+      <Outlet />
+
       <footer className={styles.footer}>
         <p className={styles.copyright}>
-          &copy; Copyright {new Date().getFullYear()} by Cody Ivy
+           by Cody Ivy - Oct,2023
         </p>
       </footer>
     </div>
