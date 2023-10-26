@@ -19,7 +19,7 @@ const CountriesList = ({ cities, isLoading }) => {
     <ul className={styles.countryList}>
       {countries.map((country) => {
         // eslint-disable-next-line react/jsx-key
-        return <CountryItem country={country} />;
+        return <CountryItem country={country} key={country.country}/>;
       })}
     </ul>
   );
