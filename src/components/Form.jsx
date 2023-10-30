@@ -26,7 +26,8 @@ const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 function Form() {
   const [lat, lng] = useUrlPosition();
-  const {createCity} = useCities()
+  const { createCity, isLoading } = useCities();
+  const navigate = useNavigate()
 
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [cityName, setCityName] = useState("");
@@ -46,13 +47,13 @@ function Form() {
 
         const res = await fetch(`${BASE_URL}?latitude=${lat}&longitude=${lng}`);
         const data = await res.json();
-        console.log(data);
+
         if (!data.countryCode)
           throw new Error(
             "That doesn't seem to be a city. Please click somewhere else."
           );
 
-        setCityName( data.locality || "");
+        setCityName(data.locality || "");
         setCountry(data.countryName);
         setEmoji(convertToEmoji(data.countryCode));
       } catch (err) {
@@ -64,7 +65,7 @@ function Form() {
     fetchCitydata();
   }, [lat, lng]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!cityName || !date) return;
 
@@ -76,7 +77,8 @@ function Form() {
       notes,
       position: { lat, lng },
     };
-    createCity(newCity)
+    await createCity(newCity);
+    navigate('/app/cities')
   }
 
   if (isLoadingGeocoding) return <Spinner />;
@@ -87,7 +89,10 @@ function Form() {
     return <Message message="Start by clicking somewhere on the map." />;
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
