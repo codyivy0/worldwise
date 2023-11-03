@@ -23,6 +23,30 @@
         "lng": -3.7133789062500004
       },
       "id": 17806751
+    },
+    {
+      "cityName": "Post Oak",
+      "country": "United States of America (the)",
+      "emoji": "🇺🇸",
+      "date": "2023-11-03T18:26:46.220Z",
+      "notes": "",
+      "position": {
+        "lat": "38.60168273881382",
+        "lng": "-93.71690171985671"
+      },
+      "id": 73930386
+    },
+    {
+      "cityName": "Saint-Aventin",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2023-11-03T18:29:48.283Z",
+      "notes": "",
+      "position": {
+        "lat": "42.74808712941627",
+        "lng": "0.5882637269454972"
+      },
+      "id": 73930387
     }
   ]
 }
